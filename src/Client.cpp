@@ -17,6 +17,7 @@ const std::string& Client::getNume() const
     return nume;
 }
 
+
 const std::string& Client::getEmail() const
 {
     return email;
