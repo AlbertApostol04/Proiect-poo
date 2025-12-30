@@ -30,3 +30,4 @@ public:
 
 
 std::ostream& operator<<(std::ostream& out, const Client& c);
+std::istream& operator>>(std::istream& in, Client c);

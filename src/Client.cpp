@@ -45,7 +45,17 @@ void Client::setNrTel(const std::string& telefon)
 
 std::ostream& operator<<(std::ostream& out,const Client& c)
 {
-   out<< c.getIdClient()<<" "<<c.getEmail()<<" "<<c.getNume()<<" "<<c.getNrTel();
+   out<<"Id client:"<<c.getIdClient()
+    <<" | "<<"Nume: "<<c.getNume()
+    <<" | "<<"Email: "<<c.getEmail()
+    <<" | "<<"Numar de telefon: "<<c.getNrTel();
+
+    return out;
+}
+
+std::istream& operator>>(std::istream& in, Client& c)
+{
+    return in;
 }
 
 
