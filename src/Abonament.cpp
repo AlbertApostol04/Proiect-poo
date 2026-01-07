@@ -1,11 +1,11 @@
 #include "Abonament.h"
 
-const int Abonament::valabilitateNormala = 30;
+const int Abonament::valabilitateNormala = 28;
 
 Abonament::Abonament()
 {
     student=false;
-    zileRamase=28;
+    zileRamase=valabilitateNormala;
     pret=0.0;
 
 
@@ -16,7 +16,7 @@ Abonament::Abonament(bool stud)
 {
 
     this->student=stud;
-    zileRamase=28;
+    zileRamase=valabilitateNormala;
     pret=0.0;
 
 }

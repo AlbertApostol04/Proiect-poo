@@ -1,5 +1,6 @@
 #include "AbonamentPerioada.h"
 #include<iostream>
+#include<stdexcept>
 
 const double AbonamentPerioada::pretFix=170;
 

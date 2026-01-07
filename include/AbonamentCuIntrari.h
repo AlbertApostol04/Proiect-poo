@@ -6,11 +6,10 @@
 
 class AbonamentCuIntrari:public Abonament
 {
-private:
+protected:
 
     int nrIntrariRamase;
     static const double pretFix;
-
 
 
 

@@ -2,11 +2,14 @@
 #include <stdexcept>
 
 
+
 int Client::generatorId=1;
 Client::Client(): nume(""),email(""),nrTel(""),idClient(generatorId++),abonament(nullptr){}
 
 Client::Client(const std::string& nume, const std::string& email, const std::string& telefon):
 nume(nume),email(email),nrTel(telefon),idClient(generatorId++),abonament(nullptr){}
+
+Client::~Client()= default;
 
 int Client::getIdClient() const{
     return idClient;
@@ -28,7 +31,12 @@ const std::string& Client::getNrTel() const
     return nrTel;
 }
 
-const Abonament* Client::getAbonament()
+Abonament* Client::getAbonament()
+{
+    return abonament;
+}
+
+const Abonament* Client::getAbonament() const
 {
     return abonament;
 }

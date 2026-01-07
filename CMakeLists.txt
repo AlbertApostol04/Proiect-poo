@@ -137,7 +137,19 @@ add_executable(${MAIN_EXECUTABLE_NAME} main.cpp ${SOURCES}
         src/AbonamentCuIntrari.cpp
         include/Abonament.h
         include/AbonamentPerioada.h
-        src/AbonamentPerioada.cpp)
+        src/AbonamentPerioada.cpp
+        include/AbonamentCuAntrenor.h
+        src/AbonamentCuAntrenor.cpp
+        include/Antrenor.h
+        src/Antrenor.cpp
+        include/Cutie.h
+        include/Plata.h
+        include/PlataCard.h
+        include/PlataCash.h
+        src/Plata.cpp
+        src/PlataCash.cpp
+        src/PlataCard.cpp
+        include/FabricaPlati.h)
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
 # NOTE: RUN_SANITIZERS is optional, if it's not present it will default to true

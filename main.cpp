@@ -1,16 +1,62 @@
 #include <iostream>
 #include <vector>
+#include<map>
 #include<algorithm>
 
+#include "AbonamentCuAntrenor.h"
 #include "AbonamentCuIntrari.h"
 #include "AbonamentPerioada.h"
+#include "Antrenor.h"
 #include "Client.h"
+#include "Cutie.h"
+#include "PlataCash.h"
+#include "PlataCard.h"
+#include "FabricaPlati.h"
 
 int main()
 {
     int opt=-1,nr=-1;
     std::vector<Client>clienti;
     std::vector<Abonament*>abonamente;
+    std::vector<Plata*> plati;
+    std::map<int,Antrenor>antrenori;
+
+
+    Cutie<int> clientSelectatId;
+    clientSelectatId.setVal(-1);
+
+    Cutie<int> antrenorSelectat;
+    antrenorSelectat.setVal(-1);
+
+    FabricaPlati fabricaPlati;
+
+    auto proceseazaPlata= [&](double sumaDePlata)->bool
+    {
+        Plata* p = nullptr;
+        try{
+            p = fabricaPlati.creeaza(sumaDePlata);
+            p->proceseaza();
+
+            plati.push_back(p);
+            return true;
+        }
+        catch (const std::exception& e)
+        {
+            std::cout<<"Plata esuata: "<<e.what()<<"\n";
+            delete p;
+            return false;
+        }
+    };
+
+    Antrenor Alex("Dumitru Alexandru","0733563200");
+    Antrenor Adelina("Negraru Adelina Andreea ","072805781");
+    Antrenor Mihai("Popescu Mihail","0727863631");
+    Antrenor Vlad("Vlad Gavril Gabriel","0767522491");
+
+    antrenori[Alex.getIdAntrenor()] = Alex;
+    antrenori[Adelina.getIdAntrenor()] = Adelina;
+    antrenori[Mihai.getIdAntrenor()] = Mihai;
+    antrenori[Vlad.getIdAntrenor()] = Vlad;
 
 
 
@@ -21,8 +67,14 @@ int main()
         std::cout<<"Introduceti 3 pentru a cauta un client dupa Id"<<std::endl;
         std::cout<<"Introduceti 0 pentru a inchide aplicatia"<<std::endl;
         std::cout<<"Introduceti 4 pentru a atasa un abonament unui client"<<std::endl;
+        std::cout<<"Introduceti 5 pentru a valida checkin-ul clientului"<<std::endl;
+        std::cout<<"Introduceti 6 pentru a afisa antrenorii"<<std::endl;
 
         std::cin>>opt;
+
+        if (opt==0)
+            break;
+
         if (opt==1)
         {   std::string nume,email,nrtel;
             std::getline(std::cin>> std::ws, nume);
@@ -55,6 +107,7 @@ int main()
             if (it != clienti.end())
             {
                 std::cout<<"Client gasit "<< *it << std::endl;
+                clientSelectatId.setVal(it->getIdClient());
             }
             else std::cout<<"Clientul cautat nu exista"<< std::endl;
         }
@@ -75,23 +128,30 @@ int main()
                 {
                     std::cout<<"Introduceti numarul 1 pentru abonament cu 8 intrari.\n";
                     std::cout<<"Introduceti numarul 2 pentru abonament cu intrari nelimitate.\n";
+                    std::cout<<"Introduceti numarul 3 pentru abonament cu antrenamente cu antrenor privat.\n";
 
                     std::cin>>nr;
 
                     if (nr == 1)
                     {
-                        std::cout<<"Sunteti student?\n Introduceti 1 daca da sunteti sau 0 daca nu sunteti.\n";
+                        std::cout<<"Sunteti student?\n Introduceti 1 daca sunteti student(a).\n";
                         int verif;
                         bool stud=false;
                         std::cin>>verif;
                         if (verif==1)
                             stud=true;
-                        else if (verif !=0 && verif!=1)
-                            std::cout<<"Numarul introdus nu este valabil\n";
 
                         Abonament* a=new AbonamentCuIntrari(stud);
-                        abonamente.push_back(a);
-                        it->setAbonament(a);
+
+                        if (proceseazaPlata(a->getPret())){
+
+                            abonamente.push_back(a);
+                            it->setAbonament(a);
+                        }
+                        else
+                        {
+                            delete a;
+                        }
                     }
                     else if (nr == 2 )
                     {
@@ -99,30 +159,168 @@ int main()
                         int zile;
                         std::cin>>zile;
 
-                        std::cout<<"Sunteti student?\n Introduceti 1 daca da sunteti sau 0 daca nu sunteti.\n";
+                        std::cout<<"Sunteti student?\n Introduceti 1 daca sunteti student(a).\n";
                         int verif;
                         std::cin>>verif;
                         bool stud=false;
                         if (verif==1)
                             stud=true;
-                        else if (verif !=0 && verif!=1)
-                            std::cout<<"Numarul introdus nu este valabil\n";
 
-                        Abonament* a=new AbonamentPerioada(zile,stud);
-                        abonamente.push_back(a);
-                        it->setAbonament(a);
+                        Abonament* a = nullptr;
+
+                        try{ a = new AbonamentPerioada(zile, stud);
+
+                            if (proceseazaPlata(a->getPret()))
+                            {
+                                abonamente.push_back(a);
+                                it->setAbonament(a);
+                            }
+                            else
+                            {
+                                delete a;
+                                a=nullptr;
+                            }
+                        }
+                        catch (const std::exception& e){
+                            delete a;
+                            a = nullptr;
+                            std::cout<<"Eroare abonament: "<< e.what()<<std::endl;
+                        }
+                    }
+                    else if (nr ==3)
+                    {
+                        try
+                        {
+
+                            std::cout<<"Introduceti numarul de sesiuni dorite:\n";
+                            int zile;
+                            std::cin>>zile;
+                            if (zile <= 0)zile=8;
+
+                            std::cout<<"Sunteti student?\n Introduceti 1 daca sunteti student(a).\n";
+                            int verif;
+                            bool stud=false;
+                            std::cin>>verif;
+                            if (verif==1)
+                                stud=true;
+
+                            auto it1= std::min_element(antrenori.begin(), antrenori.end(),
+                                [](const auto& p1, const auto& p2)
+                                {
+                                    const Antrenor& t1=p1.second;
+                                    const Antrenor& t2=p2.second;
+
+                                    const bool verif1 =t1.disponibil();
+                                    const bool verif2 = t2.disponibil();
+
+                                    if (verif1!=verif2) return verif1>verif2;
+
+                                    if (verif1 && verif2)
+                                    {
+                                       if (t1.getNrClienti()!= t2.getNrClienti())
+                                           return t1.getNrClienti()<t2.getNrClienti();
+                                    }
+
+                                    return p1.first < p2.first;
+                                });
+
+                            if (it1==antrenori.end() || !it1->second.disponibil())
+                            {
+                                std::cout << "Nu exista antrenori disponibili in acest moment\n";
+                            }
+                            else
+                            {
+                                Abonament* a= new AbonamentCuAntrenor(zile, stud);
+
+                                auto* abAntrenor =dynamic_cast<AbonamentCuAntrenor*>(a);
+                                if (!abAntrenor)
+                                {
+                                    delete a;
+                                    throw std::runtime_error("Eroare interna: abonamentul ales nu include antrenori.");
+                                }
+
+                                std::string numeAntrenor= it1->second.getNume();
+                                abAntrenor->setNumeAntrenor(numeAntrenor);
+
+                                if (proceseazaPlata(a->getPret()))
+                                {
+                                    it1->second.alocaClient(it->getIdClient());
+                                    antrenorSelectat.setVal(it1->first);
+
+                                    abonamente.push_back(a);
+                                    it->setAbonament(a);
+
+                                    std::cout<<"Antrenor alocat: "<< it1->second.getNume()<<std::endl;
+                                }
+                                else
+                                {
+                                    delete a;
+                                }
+                            }
+                        }
+                        catch (const std::exception& e)
+                        {
+                            std::cout<<"Eroare"<<e.what()<<std::endl;
+                        }
                     }
                     else std::cout<<"Optiune invalida";
                 }
                 else std::cout<<"Clientul are deja abonament";
             }
-
             else std::cout<<"Clientul cautat nu exista"<< std::endl;
 
         }
+        else if (opt == 5 )
+        {
+            int idCautat;
+            std::cout<<"Introduceti ID-ul: ";
+            std::cin>>idCautat;
+
+            auto it=std::find_if(clienti.begin(),clienti.end(),[idCautat](const Client& c)
+            {
+                return c.getIdClient()==idCautat;
+            });
+
+            if (it == clienti.end())
+                std::cout<<"Client inexistent\n";
+            else if (!it->areAbonament())
+                std::cout<<"Clientul nu are abonament\n";
+            else
+            {   AbonamentCuAntrenor* abT = dynamic_cast<AbonamentCuAntrenor*>(it->getAbonament());
+                if (abT != nullptr)
+                {
+                    std::cout << "[INFO] Abonament cu antrenor: " << abT->getNumeAntrenor() << "\n";
+                }
+                it->getAbonament()->checkIn();
+            }
+        }
+        else if (opt == 6)
+        {
+            if (antrenori.empty())
+            {
+                std::cout<<"Nu exista antrenori.\n";
+            }
+            else
+            {
+                std::map<int,Antrenor>::iterator itMap;
+
+                for (itMap=antrenori.begin(); itMap != antrenori.end(); ++itMap)
+                {
+                    std::cout<<itMap->second<<"\n";
+                }
+            }
+        }
+        else std::cout<<"Aceasta optiune nu exista";
     }
+
     for (int i=0; i<abonamente.size();i++)
     {
         delete abonamente[i];
     }
+
+    for (int i = 0; i< plati.size(); i++)
+    {
+        delete plati[i];
+    }
+
 }

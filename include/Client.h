@@ -21,12 +21,14 @@ public:
 
     Client();
     Client(const std::string& nume,const std::string& email,const std::string& nrTel);
+    ~Client();
     int getIdClient() const;
 
     const std::string& getNume() const;
     const std::string& getEmail() const;
     const std::string& getNrTel() const;
-    const Abonament* getAbonament();
+    Abonament* getAbonament();
+    const Abonament* getAbonament() const ;
 
 
     void setNume(const std::string& Nume);
