@@ -238,7 +238,7 @@ int main()
                                             const bool verif1 =t1.disponibil();
                                             const bool verif2 = t2.disponibil();
 
-                                            if(verif1!=verif2) return verif1 && !verif2;
+                                            if(verif1!=verif2) return verif1;
 
                                             if (verif1)
                                             {
@@ -304,7 +304,7 @@ int main()
                     else if (!it->areAbonament())
                         std::cout<<"Clientul nu are abonament\n";
                     else
-                    {   auto* abT = dynamic_cast<AbonamentCuAntrenor*>(it->getAbonament());
+                    {   const auto*abT=dynamic_cast<const AbonamentCuAntrenor*>(it->getAbonament());
                         if (abT != nullptr)
                         {
                             std::cout << "Abonament cu antrenor: " << abT->getNumeAntrenor() << "\n";
