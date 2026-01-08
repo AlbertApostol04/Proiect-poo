@@ -1,8 +1,5 @@
 #pragma once
-
-
 #include<string>
-
 #include "Abonament.h"
 
 class AbonamentPerioada:public Abonament
@@ -11,14 +8,13 @@ class AbonamentPerioada:public Abonament
 
     int intrariEfectuate;
     static const double pretFix;
+    static std::string termeniAbonament;
 
 public:
 
     AbonamentPerioada();
     AbonamentPerioada(int zile, bool stud);
 
-
-    const std::string& getTipAb() const;
 
     void setIntrariEfectuate(int a);
 
@@ -27,6 +23,7 @@ public:
     bool permiteIntrare() const override;
     void checkIn() override;
 
+    static void setTermeniAb(const std::string& termeni);
 
 
 };

@@ -16,7 +16,8 @@ protected:
 public:
 
     AbonamentCuIntrari();
-    AbonamentCuIntrari(bool stud);
+    explicit AbonamentCuIntrari(bool stud);
+    AbonamentCuIntrari(int nrIntrari, bool stud);
 
     void setNrIntariRamase(int nr);
 

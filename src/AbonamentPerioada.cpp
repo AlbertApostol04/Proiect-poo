@@ -3,16 +3,29 @@
 #include<stdexcept>
 
 const double AbonamentPerioada::pretFix=170;
+std::string AbonamentPerioada::termeniAbonament ="Termeni:acces nelimitat in perioada abonamentului.Maxim 1 check-in pe zi.";
 
 AbonamentPerioada::AbonamentPerioada()
+    : Abonament(false),intrariEfectuate(0)
 {
-    pret=pretFix;
-    intrariEfectuate=0;
-    zileRamase=valabilitateNormala;
-    student=false;
-    intrariEfectuate=0;
-    tipAb="Abonament Nelimitat";
+    pret= pretFix;
+    tipAb = "Abonament Nelimitat";
 }
+
+AbonamentPerioada::AbonamentPerioada(int zile, bool stud)
+    : Abonament(stud),intrariEfectuate(0)
+{
+    zileRamase = zile;
+
+    pret= PretAbonamentStudent(oferte(zile), stud);
+    tipAb = "Abonament Nelimitat";
+}
+
+void AbonamentPerioada::setIntrariEfectuate(int a)
+{
+    intrariEfectuate = a;
+}
+
 
 double AbonamentPerioada::oferte(int zile)
 {
@@ -27,17 +40,6 @@ double AbonamentPerioada::oferte(int zile)
     throw std::invalid_argument("Numarul de zile este  invalid!Permise:1, 7, 14, 28");
 }
 
-AbonamentPerioada::AbonamentPerioada(int zile, bool stud)
-{
-    student=stud;
-    zileRamase=zile;
-    intrariEfectuate=0;
-    pret=PretAbonamentStudent(oferte(zile),stud);
-    tipAb="Abonament Nelimitat";
-
-}
-
-
 bool AbonamentPerioada::permiteIntrare() const
 {
     return (zileRamase >0);
@@ -51,9 +53,16 @@ void AbonamentPerioada::checkIn()
         std::cout<<"Abonamentul dumneavoastra nu mai este valabil\n";
     }
     else
-    {
-
+    {   zileRamase--;
+        intrariEfectuate++;
         std::cout<<"Spor la antrement!\n";
+    }
+}
+
+void AbonamentPerioada::setTermeniAb(const std::string& termeni)
+{
+    if (!termeni.empty()) {
+        termeniAbonament = termeni;
     }
 }
 

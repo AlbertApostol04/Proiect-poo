@@ -138,6 +138,7 @@ Antrenor& Antrenor::operator+=(int idClient)
     return *this;
 }
 
+
 std::ostream& operator<<(std::ostream& out, const Antrenor& a)
 {
     out<<"Id antrenor: "<<a.getIdAntrenor()
@@ -155,4 +156,34 @@ bool operator<(const Antrenor& a1,const Antrenor& a2)
         return a1.getNrClienti() < a2.getNrClienti();
 
     return a1.getIdAntrenor()<a2.getIdAntrenor();
+}
+
+void Antrenor::afiseazaClienti(std::ostream& out) const // NOU
+{
+    out<<"Antrenor: "<<numeAntrenor
+    <<"(ID "<< idAntrenor<<") - Clienti: ";
+
+    if (nrClientiCurenti == 0)
+    {
+        out<<"niciun client.\n";
+        return;
+    }
+
+    for (int i=0;i < nrClientiCurenti;i++)
+    {
+        out<<clientiId[i];
+        if (i+1<nrClientiCurenti)out<<", ";
+    }
+    out<<"\n";
+}
+
+bool Antrenor::checkIn() const // NOU
+{
+    if (nrClientiCurenti<=0)
+    {
+        std::cout<<"Nu aveti niciun client alocat. Nu puteti face check-in ca antrenor.\nTreceti pe contul de client.\n";
+        return false;
+    }
+    std::cout<<"Check-in antrenor reusit! Spor la antrenament"<<numeAntrenor;
+    return true;
 }
