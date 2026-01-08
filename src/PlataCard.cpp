@@ -11,7 +11,7 @@ PlataCard::PlataCard()
 PlataCard::PlataCard(double s)
 {
     suma=s;
-    cardValid=true;
+    setCardValid(true);
 }
 
 
@@ -29,7 +29,7 @@ void PlataCard::setCardValid(bool v)
 double PlataCard::proceseaza()
 {
 
-        if (cardValid== false)
+        if (!getCardValid())
             throw std::runtime_error("Card respins.");
         else
         {

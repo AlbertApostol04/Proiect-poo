@@ -145,7 +145,8 @@ std::ostream& operator<<(std::ostream& out, const Antrenor& a)
     <<" | Nume: " <<a.getNume()
     <<" | Tel: " << a.getNrTel()
     <<" | Clienti: " <<a.getNrClienti()
-    <<"/" <<a.getMaxClienti();
+    <<" | Locuri libere: " <<a.locuriLibere()
+    <<" | " <<a.getMaxClienti();
 
     return out;
 }

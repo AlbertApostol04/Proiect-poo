@@ -30,17 +30,17 @@ void PlataCash::setBaniPrimiti(double s)
 double PlataCash::proceseaza()
 {
 
-        if (baniPrimiti < suma)
+        if (getBaniPrimiti()<getSuma())
             throw std::runtime_error("Suma insuficienta");
-        else if (suma==baniPrimiti)
+        else if (getBaniPrimiti() == getSuma())
         {
             std::cout<<"Plata acceptata. Nu aveti rest.\n";
             return 0.0;
         }
         else
         {
-            std::cout<<"Plata acceptata. "<<"Restul dumneavoastra este:"<< baniPrimiti - suma<<"\n";
-            return baniPrimiti-suma;
+            std::cout<<"Plata acceptata. "<<"Restul dumneavoastra este:"<<getBaniPrimiti()-getSuma()<<"\n";
+            return getBaniPrimiti()-getSuma();
         }
 
 }

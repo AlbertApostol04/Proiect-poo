@@ -177,7 +177,6 @@ int main()
                                 std::cout<<"Pentru abonamentul cu intrari nelimitat avem urmatoarel variante:\nAbonament de 1 zile.\n Abonament de 7 zile. \n Abonament de 14 zile.\n Abonament de 28 zile.\n Introduceti perioada dorita:\n";
                                 int zile;
                                 std::cin>>zile;
-
                                 std::cout<<"Sunteti student?\n Introduceti 1 daca sunteti student(a).\n";
                                 int verif;
                                 std::cin>>verif;
@@ -185,6 +184,7 @@ int main()
                                 if (verif==1)
                                     stud=true;
 
+                                AbonamentPerioada::setTermeniAb("Termeni: acces nelimitat in perioada abonamentului. Maxim 1 check-in pe zi.");
 
                                 try {
                                     auto a = std::make_shared<AbonamentPerioada>(zile, stud);
