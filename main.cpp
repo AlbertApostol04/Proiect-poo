@@ -77,16 +77,15 @@ int main()
     antrenori[Vlad.getIdAntrenor()] = Vlad;
 
 
-
-    while (opt!=0)
+    while (true)
     {
-        std::cout<<"Introduceti 1 pentru a intra in meniul clienti"<<std::endl;
-        std::cout<<"Introduceti 2 pentru a intra in meniul antrenori"<<std::endl;
-        std::cout<<"Introduceti 0 pentru a inchide aplicatia"<<std::endl;
+        std::cout<<"Introduceti 1 pentru a intra in meniul clienti\n";
+        std::cout<<"Introduceti 2 pentru a intra in meniul antrenori\n";
+        std::cout<<"Introduceti 0 pentru a inchide aplicatia\n";
 
-        std::cin>>opt;
-
-        if (opt==0)
+        if (!(std::cin>>opt))
+            return 0;
+        if (opt == 0)
             break;
 
         if (opt==1)
@@ -101,7 +100,8 @@ int main()
                 std::cout<<"Introduceti 5 pentru a valida checkin-ul clientului"<<std::endl;
                 std::cout<<"Introduceti 0 pentru a parasi meniul Clienti"<<std::endl;
 
-                std::cin>>opt2;
+                if (!(std::cin>>opt2))
+                    return 0;
 
                 if (opt2==1)
                 {   std::string nume,email,nrtel;
@@ -328,7 +328,8 @@ int main()
 
                 std::cout<<"Introduceti 0 pentru a parasi meniul Antrenori"<<std::endl;
 
-                std::cin>>opt3;
+                if (!(std::cin>>opt3))
+                    return 0;
 
                 if (opt3 == 1)
                 {
