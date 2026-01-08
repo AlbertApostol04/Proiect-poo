@@ -1,8 +1,9 @@
 #pragma once
 #include "Plata.h"
+#include<memory>
 
 class FabricaPlati
 {
 public:
-    Plata* creeaza(double sumaDePlata) const;
+    std::unique_ptr<Plata> creeaza(double sumaDePlata) const;
 };

@@ -20,7 +20,7 @@ int main()
     int opt=-1,opt2=-1,opt3=-1,nr=-1;
     std::vector<Client>clienti;
     std::vector<std::shared_ptr<Abonament>> abonamente;
-    std::vector<Plata*> plati;
+    std::vector<std::unique_ptr<Plata>> plati;
     std::map<int,Antrenor>antrenori;
 
 
@@ -37,31 +37,25 @@ int main()
 
     auto proceseazaPlata= [&](double sumaDePlata)->bool
     {
-        Plata* p= nullptr;
-
         try
         {
-            p= fabricaPlati.creeaza(sumaDePlata);
-            auto*pcash=dynamic_cast<PlataCash*>(p);
-
-            if(pcash != nullptr)
+            auto p= fabricaPlati.creeaza(sumaDePlata);
+            if (auto* pcash= dynamic_cast<PlataCash*>(p.get()))
             {
                 double baniPrimiti=0.0;
                 std::cout<<"Introdu suma primita cash:";
                 std::cin>>baniPrimiti;
                 pcash->setBaniPrimiti(baniPrimiti);
             }
-
-
             p->proceseaza();
-            std::cout<<"Plata procesata pentru suma: "<<p->getSuma()<<"\n";
-            plati.push_back(p);
+            std::cout<<"Plata procesata pentru suma: "<< p->getSuma()<<"\n";
+
+            plati.push_back(std::move(p));
             return true;
-        }
+         }
         catch (const std::exception& e)
         {
             std::cout<<"Plata esuata: "<<e.what()<<"\n";
-            delete p;
             return false;
         }
     };
@@ -385,12 +379,6 @@ int main()
         else std::cout<<"Aceasta optiune nu exista";
     }
 
-
-
-    for (size_t i = 0; i< plati.size(); i++)
-    {
-        delete plati[i];
-    }
-
+    
     return 0;
 }

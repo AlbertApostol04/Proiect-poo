@@ -87,9 +87,8 @@ Client& Client::operator=(const Client& c)
     nume=c.nume;
     email = c.email;
     nrTel = c.nrTel;
-    idClient=c.idClient;
 
-    abonament = c.abonament;
+    abonament= c.abonament;
 
     return *this;
 }
@@ -104,14 +103,12 @@ const Abonament* Client::getAbonament() const {
 }
 
 void Client::setAbonament(Abonament* a) {
-    abonament = a;
+    abonament= a;
 }
 
 bool Client::areAbonament() const {
     return abonament != nullptr;
 }
-
-
 
 
 
