@@ -2,9 +2,11 @@
 #include "Plata.h"
 #include<string>
 
+
 class PlataCash: public Plata
 {
 private:
+
     double baniPrimiti;
 
 public:

@@ -1,6 +1,8 @@
 #pragma once
 #include "Plata.h"
 #include<string>
+
+
 class PlataCard: public Plata
 {
 private:
@@ -15,6 +17,5 @@ public:
     void setCardValid(bool card);
 
     double proceseaza() override;
-
 
 };

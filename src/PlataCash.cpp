@@ -15,7 +15,6 @@ PlataCash::PlataCash(double s1, double s2)
     baniPrimiti=s2;
 }
 
-
 double PlataCash::getBaniPrimiti() const
 {
     return baniPrimiti;
@@ -25,7 +24,6 @@ void PlataCash::setBaniPrimiti(double s)
 {
     baniPrimiti = s;
 }
-
 
 double PlataCash::proceseaza()
 {

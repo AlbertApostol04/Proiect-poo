@@ -2,9 +2,10 @@
 #include<string>
 #include "Abonament.h"
 
-class AbonamentPerioada:public Abonament
-{private:
 
+class AbonamentPerioada:public Abonament
+{
+private:
 
     int intrariEfectuate;
     static const double pretFix;
@@ -24,6 +25,5 @@ public:
     void checkIn() override;
 
     static void setTermeniAb(const std::string& termeni);
-
 
 };

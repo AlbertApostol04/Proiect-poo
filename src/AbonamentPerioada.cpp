@@ -2,6 +2,7 @@
 #include<iostream>
 #include<stdexcept>
 
+
 const double AbonamentPerioada::pretFix=170;
 std::string AbonamentPerioada::termeniAbonament ="Termeni:acces nelimitat in perioada abonamentului.Maxim 1 check-in pe zi.";
 
@@ -15,8 +16,8 @@ AbonamentPerioada::AbonamentPerioada()
 AbonamentPerioada::AbonamentPerioada(int zile, bool stud)
     : Abonament(stud),intrariEfectuate(0)
 {
-    zileRamase = zile;
 
+    zileRamase = zile;
     pret= PretAbonamentStudent(oferte(zile), stud);
     tipAb = "Abonament Nelimitat";
 }
@@ -25,7 +26,6 @@ void AbonamentPerioada::setIntrariEfectuate(int a)
 {
     intrariEfectuate = a;
 }
-
 
 double AbonamentPerioada::oferte(int zile)
 {

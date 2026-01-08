@@ -8,12 +8,13 @@
 
 std::unique_ptr<Plata> FabricaPlati::creeaza(double sumaDePlata) const
 {
+
     std::cout<<"Alegeti metoda de plata:\n";
     std::cout<<"Introduceti 1 pentru Cash\n";
     std::cout<<"Introduceti 2 pentru Card\n";
 
-    int tip = 0;
-    std::cin >> tip;
+    int tip= 0;
+    std::cin>>tip;
 
     if (tip == 1)
     {

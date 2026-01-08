@@ -6,6 +6,7 @@
 class Antrenor
 {
 private:
+
     std::string numeAntrenor;
     std::string nrTel;
     int idAntrenor;
@@ -16,8 +17,6 @@ private:
 
 public:
 
-
-
     Antrenor();
     Antrenor(const std::string& nume,const std::string& nrTel);
     Antrenor(const Antrenor& a);
@@ -25,8 +24,6 @@ public:
     ~Antrenor();
 
     Antrenor& operator+=(int idClient);
-
-
 
     int getNrClienti() const;
     int getMaxClienti() const;

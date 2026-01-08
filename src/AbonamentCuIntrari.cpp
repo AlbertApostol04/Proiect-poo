@@ -9,8 +9,8 @@ AbonamentCuIntrari::AbonamentCuIntrari()
 {
     pret= pretFix;
     tipAb = "Abonament cu 8 intrari\n";
-}
 
+}
 
 AbonamentCuIntrari::AbonamentCuIntrari(bool stud)
     : Abonament(stud),nrIntrariRamase(8)
@@ -33,7 +33,8 @@ int AbonamentCuIntrari::getNrIntrariRamase() const
 AbonamentCuIntrari::AbonamentCuIntrari(int nrIntrari,bool stud)
     : Abonament(stud),nrIntrariRamase(nrIntrari)
 {
-    if (nrIntrariRamase <= 0) {
+    if (nrIntrariRamase <= 0)
+    {
         throw std::invalid_argument("Numarul de intrari trebuie sa fie > 0.");
     }
 

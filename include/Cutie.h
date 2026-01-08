@@ -1,12 +1,13 @@
 #pragma once
 
-
 template<class T>
 
 class Cutie
 {
 private:
+
     T val{};
+
 public:
 
     Cutie()=default;

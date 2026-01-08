@@ -8,9 +8,7 @@ Abonament::Abonament()
     zileRamase=valabilitateNormala;
     pret=0.0;
 
-
 }
-
 
 Abonament::Abonament(bool stud)
 {
@@ -18,7 +16,6 @@ Abonament::Abonament(bool stud)
     this->student=stud;
     zileRamase=valabilitateNormala;
     pret=0.0;
-
 }
 
 double Abonament::PretAbonamentStudent(double pret1, bool stud)

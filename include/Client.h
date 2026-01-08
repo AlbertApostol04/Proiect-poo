@@ -3,8 +3,8 @@
 #include<iostream>
 #include <memory>
 
-class Abonament;
 
+class Abonament;
 class Client{
 
 private:
@@ -17,8 +17,6 @@ private:
     Abonament* abonament;
 
 public:
-
-
 
     Client();
     Client(const std::string& nume,const std::string& email,const std::string& nrTel);

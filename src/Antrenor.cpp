@@ -2,8 +2,9 @@
 #include<stdexcept>
 #include<istream>
 #include<ostream>
-const int Antrenor::nrMaxClienti=5;
 
+
+const int Antrenor::nrMaxClienti=5;
 int Antrenor::idGenerator=1;
 
 Antrenor::Antrenor(): numeAntrenor(""),nrTel(""),idAntrenor(idGenerator++),nrClientiCurenti(0),clientiId(new int[nrMaxClienti])

@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 
+
 class Abonament{
 
 protected:
@@ -10,7 +11,6 @@ protected:
     bool student;
     static const int valabilitateNormala;
     std::string tipAb;
-
 
 public:
 

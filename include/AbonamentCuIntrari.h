@@ -1,8 +1,8 @@
 #pragma once
-
 #include<string>
 
 #include "Abonament.h"
+
 
 class AbonamentCuIntrari:public Abonament
 {
@@ -10,8 +10,6 @@ protected:
 
     int nrIntrariRamase;
     static const double pretFix;
-
-
 
 public:
 

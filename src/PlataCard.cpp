@@ -2,6 +2,7 @@
 #include"PlataCard.h"
 #include<stdexcept>
 
+
 PlataCard::PlataCard()
 {
     suma=0;
@@ -24,7 +25,6 @@ void PlataCard::setCardValid(bool v)
 {
     cardValid = v;
 }
-
 
 double PlataCard::proceseaza()
 {
