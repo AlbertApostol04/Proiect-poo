@@ -17,6 +17,7 @@
 
 int main()
 {
+
     int opt=-1,opt2=-1,opt3=-1,nr=-1;
     std::vector<Client>clienti;
     std::vector<std::shared_ptr<Abonament>> abonamente;
