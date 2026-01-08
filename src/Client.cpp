@@ -87,6 +87,7 @@ Client& Client::operator=(const Client& c)
     nume=c.nume;
     email = c.email;
     nrTel = c.nrTel;
+    idClient=c.idClient;
 
     abonament = c.abonament;
 
