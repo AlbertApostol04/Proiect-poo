@@ -238,9 +238,9 @@ int main()
                                             const bool verif1 =t1.disponibil();
                                             const bool verif2 = t2.disponibil();
 
-                                            if (verif1!=verif2) return verif1>verif2;
+                                            if(verif1!=verif2) return verif1 && !verif2;
 
-                                            if (verif1 && verif2)
+                                            if (verif1)
                                             {
                                                if (t1.getNrClienti()!= t2.getNrClienti())
                                                    return t1.getNrClienti()<t2.getNrClienti();

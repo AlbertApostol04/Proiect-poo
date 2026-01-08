@@ -1,22 +1,22 @@
 #pragma once
 
 
-template<typename T>
+template<class T>
 
 class Cutie
 {
 private:
-    T val;
-
+    T val{};
 public:
-    Cutie() = default;
 
-    explicit Cutie(const T& v): val(v){}
+    Cutie()=default;
 
-    void setVal(const T& v){ val=v; }
-    const T& getVal() const {return val;}
-    T& getVal() {return val;}
-
-
-
+    void setVal(const T&v)
+    {
+        val=v;
+    }
+    const T& getVal()const
+    {
+        return val;
+    }
 };
