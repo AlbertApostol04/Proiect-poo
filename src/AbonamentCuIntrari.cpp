@@ -57,6 +57,7 @@ void AbonamentCuIntrari::checkIn()
     else
     {
         setNrIntariRamase(nrIntrariRamase-1);
+        std::cout<<"Mai aveti "<<getNrIntrariRamase()<<" intrari\n";
         std::cout<<"Spor la antrenament!\n";
     }
 

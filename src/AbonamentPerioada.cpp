@@ -54,7 +54,7 @@ void AbonamentPerioada::checkIn()
     }
     else
     {   zileRamase--;
-        intrariEfectuate++;
+        setIntrariEfectuate(intrariEfectuate+1);
         std::cout<<"Spor la antrement!\n";
     }
 }
