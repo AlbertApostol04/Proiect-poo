@@ -35,6 +35,8 @@ public:
     const std::string& getNrTel() const;
     void setNumeAntrenor(const std::string& Nume);
     void setNrTel(const std::string& nrtel);
+    void afiseazaClienti(std::ostream& out) const;
+    bool checkIn() const;
 
     bool disponibil() const ;
     int locuriLibere() const;
@@ -43,6 +45,7 @@ public:
     void alocaClient(int idClient);
 
 };
+
 std::istream& operator>>(std::istream& in,Antrenor& a);
 std::ostream& operator<<(std::ostream& out,const Antrenor& a);
 bool operator<(const Antrenor& a1,const Antrenor& a2);

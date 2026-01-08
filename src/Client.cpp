@@ -1,4 +1,5 @@
 #include "Client.h"
+#include "Abonament.h"
 #include <stdexcept>
 
 
@@ -9,7 +10,6 @@ Client::Client(): nume(""),email(""),nrTel(""),idClient(generatorId++),abonament
 Client::Client(const std::string& nume, const std::string& email, const std::string& telefon):
 nume(nume),email(email),nrTel(telefon),idClient(generatorId++),abonament(nullptr){}
 
-Client::~Client()= default;
 
 int Client::getIdClient() const{
     return idClient;
@@ -31,15 +31,9 @@ const std::string& Client::getNrTel() const
     return nrTel;
 }
 
-Abonament* Client::getAbonament()
-{
-    return abonament;
-}
 
-const Abonament* Client::getAbonament() const
-{
-    return abonament;
-}
+Client::~Client()=default;
+
 
 
 void Client::setNume(const std::string& Nume)
@@ -57,10 +51,7 @@ void Client::setNrTel(const std::string& telefon)
     this->nrTel=telefon;
 }
 
-void Client::setAbonament(Abonament* a)
-{
-    abonament=a;
-}
+
 
 
 std::ostream& operator<<(std::ostream& out,const Client& c)
@@ -88,10 +79,6 @@ std::istream& operator>>(std::istream& in, Client& c)
     return in;
 }
 
-bool Client::areAbonament() const
-{
-    return abonament!= nullptr;
-}
 
 Client& Client::operator=(const Client& c)
 {
@@ -101,13 +88,27 @@ Client& Client::operator=(const Client& c)
     email = c.email;
     nrTel = c.nrTel;
 
-    abonament=c.abonament;
+    abonament = c.abonament;
 
     return *this;
 }
 
 
+Abonament* Client::getAbonament() {
+    return abonament;
+}
 
+const Abonament* Client::getAbonament() const {
+    return abonament;
+}
+
+void Client::setAbonament(Abonament* a) {
+    abonament = a;
+}
+
+bool Client::areAbonament() const {
+    return abonament != nullptr;
+}
 
 
 

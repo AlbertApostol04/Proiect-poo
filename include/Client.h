@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include<iostream>
+#include <memory>
 
 class Abonament;
 
@@ -22,21 +23,23 @@ public:
     Client();
     Client(const std::string& nume,const std::string& email,const std::string& nrTel);
     ~Client();
+
     int getIdClient() const;
 
     const std::string& getNume() const;
     const std::string& getEmail() const;
     const std::string& getNrTel() const;
     Abonament* getAbonament();
-    const Abonament* getAbonament() const ;
-
+    const Abonament* getAbonament() const;
 
     void setNume(const std::string& Nume);
     void setEmail(const std::string& Email);
     void setNrTel(const std::string& nrtel);
-    void setAbonament(Abonament* a);
+    void setAbonament(const std::shared_ptr<Abonament>& a);
 
     bool areAbonament() const;
+    void setAbonament(Abonament* a);
+
 
     Client& operator=(const Client& c);
 };

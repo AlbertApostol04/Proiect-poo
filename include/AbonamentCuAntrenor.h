@@ -1,5 +1,6 @@
-#include "AbonamentCuIntrari.h"
 #pragma once
+#include "AbonamentCuIntrari.h"
+
 class AbonamentCuAntrenor: public AbonamentCuIntrari
 {
 private:
@@ -11,7 +12,7 @@ private:
 
 public:
     AbonamentCuAntrenor();
-    AbonamentCuAntrenor(int nr,bool stud);
+    AbonamentCuAntrenor(int nr, bool stud);
 
 
     const std::string& getNumeAntrenor() const;

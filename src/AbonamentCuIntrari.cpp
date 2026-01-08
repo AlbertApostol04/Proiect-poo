@@ -1,25 +1,22 @@
 #include "AbonamentCuIntrari.h"
 #include<iostream>
+#include <stdexcept>
 
 const double AbonamentCuIntrari::pretFix=130;
 
 AbonamentCuIntrari::AbonamentCuIntrari()
+    : Abonament(false),nrIntrariRamase(8)
 {
-    nrIntrariRamase=8;
-    zileRamase=valabilitateNormala;
-    pret=pretFix;
-    student=false;
-    tipAb="Abonament cu 8 intrari";
-
+    pret= pretFix;
+    tipAb = "Abonament cu 8 intrari\n";
 }
 
+
 AbonamentCuIntrari::AbonamentCuIntrari(bool stud)
+    : Abonament(stud),nrIntrariRamase(8)
 {
-    nrIntrariRamase=8;
-    zileRamase=valabilitateNormala;
-    student=stud;
     pret=PretAbonamentStudent(pretFix,stud);
-    tipAb="Abonament cu 8 intrari";
+    tipAb= "Abonament cu 8 intrari\n";
 }
 
 
@@ -33,6 +30,16 @@ int AbonamentCuIntrari::getNrIntrariRamase() const
     return nrIntrariRamase;
 }
 
+AbonamentCuIntrari::AbonamentCuIntrari(int nrIntrari,bool stud)
+    : Abonament(stud),nrIntrariRamase(nrIntrari)
+{
+    if (nrIntrariRamase <= 0) {
+        throw std::invalid_argument("Numarul de intrari trebuie sa fie > 0.");
+    }
+
+    pret = PretAbonamentStudent(pretFix,stud);
+    tipAb="Abonament cu intrari (custom)";
+}
 
 bool AbonamentCuIntrari::permiteIntrare() const
 {

@@ -1,24 +1,20 @@
 #include "AbonamentCuAntrenor.h"
 
-const double AbonamentCuAntrenor::pretPeSedinta=60;
+const double AbonamentCuAntrenor::pretPeSedinta=60.0;
 const int AbonamentCuAntrenor::durataSedeinta=60;
 
 AbonamentCuAntrenor::AbonamentCuAntrenor()
+    : AbonamentCuIntrari(8,false)
 {
-    nrIntrariRamase=8;
-    zileRamase=valabilitateNormala;
-    student=false;
-    pret=PretAbonamentStudent(pretPeSedinta*nrIntrariRamase,false);
-    tipAb="Abonament cu 8 sedinte cu antrenor personal";
+    pret= PretAbonamentStudent(pretPeSedinta*nrIntrariRamase,false);
+    tipAb = "Abonament cu sedinte cu antrenor personal";
 }
 
-AbonamentCuAntrenor::AbonamentCuAntrenor(int nrAntrenamente,bool stud)
+AbonamentCuAntrenor::AbonamentCuAntrenor(int nr,bool stud)
+    : AbonamentCuIntrari(nr,stud)
 {
-    nrIntrariRamase=nrAntrenamente;
-    zileRamase=valabilitateNormala;
-    student=stud;
-    pret=PretAbonamentStudent(pretPeSedinta*nrIntrariRamase,stud);
-    tipAb="Abonament cu 8 sedinte cu antrenor personal";
+    pret= PretAbonamentStudent(pretPeSedinta*nrIntrariRamase,stud);
+    tipAb = "Abonament cu sedinte cu antrenor personal";
 }
 
 void AbonamentCuAntrenor::setNumeAntrenor(const std::string& nume)
