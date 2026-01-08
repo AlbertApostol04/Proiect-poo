@@ -113,13 +113,13 @@ int main()
                     std::getline(std::cin,nrtel);
                     Client c(nume,email,nrtel);
 
-
                     clienti.push_back(c);
 
                     std::cout<<"Client adaugat cu succes! ID: "<<c.getIdClient()<<"\n";
                 }
                 else if (opt2==2)
                 {
+
                     for(size_t i=0; i < clienti.size(); i++)
                     {
                         std::cout<<clienti[i]<<"\n";
