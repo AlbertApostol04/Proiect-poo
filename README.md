@@ -38,7 +38,7 @@ Aplicație in C++(consola) pentru a gestiona clienții unei săli de fitness: cr
     
 - Excepții (std::exception, std::invalid_argument, std::runtime_error) si propagare
 - STL:vector, map, algoritmi cu lambda (find_if și min_element)
-- Template: Cutie<T>(exemplu: Cutie<int>,Cutie<std::string>)
+- Template: Cutie<T>(exemplu: Cutie<int>, Cutie<std::string>)
   
 - Design patterns:
   - Factory:FabricaPlati creează PlataCash/PlataCard în funcție de input
@@ -53,12 +53,12 @@ Aplicație in C++(consola) pentru a gestiona clienții unei săli de fitness: cr
 ## Exemple de utilizare (flow-uri)
 1. **Client nou + abonament**
    - Meniu Clienți -> Adaugă client
-   - Meniu Clienți -> Atașează abonament → alege tipul abonamentului
+   - Meniu Clienți -> Atașează abonament -> alege tipul abonamentului
    - Alege metoda de plată (Cash/Card)
    - Meniu Clienți -> Check-in client
 
 2. **Abonament cu antrenor (alocare automată)**
-   - Meniu Clienți -> Atașează abonament → AbonamentCuAntrenor
+   - Meniu Clienți -> Atașează abonament -> AbonamentCuAntrenor
    - Programul alege automat antrenorul disponibil cu cei mai puțini clienți
    - Meniu Antrenori -> Afișează antrenori și clienții lor
 
