@@ -82,6 +82,8 @@ int main()
 
         if (!(std::cin>>opt))
         {
+            if(std::cin.eof())
+                return 0;
             std::cin.clear();
             std::cin.ignore(10000,'\n');
             std::cout<<"Input invalid. Introdu un numar.\n";
@@ -104,6 +106,8 @@ int main()
 
                 if (!(std::cin>>opt2))
                 {
+                    if(std::cin.eof())
+                        return 0;
                     std::cin.clear();
                     std::cin.ignore(10000,'\n');
                     std::cout<<"Input invalid. Introdu un numar.\n";
@@ -338,6 +342,8 @@ int main()
 
                 if (!(std::cin>>opt3))
                 {
+                    if(std::cin.eof())
+                        return 0;
                     std::cin.clear();
                     std::cin.ignore(10000,'\n');
                     std::cout<<"Input invalid. Introdu un numar.\n";
