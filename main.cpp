@@ -92,7 +92,7 @@ int main()
             {   std::cout<<"\n*Meniu Clienti*\n";
                 std::cout<<"\nIntroduceti 1 pentru a adauga client"<<std::endl;
                 std::cout<<"Introduceti 2 pentru a afisa clientii"<<std::endl;
-                std::cout<<"Introduceti 3 pentru a cauta un client dupa Id"<<std::endl;
+                std::cout<<"Introduceti 3 pentru a cauta un client dupa nume"<<std::endl;
                 std::cout<<"Introduceti 4 pentru a atasa un abonament unui client"<<std::endl;
                 std::cout<<"Introduceti 5 pentru a valida checkin-ul clientului"<<std::endl;
                 std::cout<<"Introduceti 0 pentru a parasi meniul Clienti"<<std::endl;
@@ -126,23 +126,24 @@ int main()
                 }
                 else if (opt2==3)
                 {
-                    int idCautat;
-                    std::cout<<"Introduceti ID-ul: ";
-                    std::cin>>idCautat;
+                    std::string numeCautat;
+                    std::cout<<"Introduceti(exact) numele clientului: ";
+                    std::getline(std::cin>>std::ws,numeCautat);
 
-                    auto it=std::find_if(clienti.begin(),clienti.end(),[idCautat](const Client& c)
-                    {
-                        return c.getIdClient()==idCautat;
-                    });
+                    auto it= std::find_if(clienti.begin(), clienti.end(),[&numeCautat](const Client& c) {
+                               return c.getNume()==numeCautat;
+                           });
 
                     if (it != clienti.end())
                     {
-                        std::cout<<"Client gasit "<< *it << std::endl;
+                        std::cout<<"Client gasit: "<<*it<<"\n";
                         clientSelectatId.setVal(it->getIdClient());
                         clientSelectatNume.setVal(it->getNume());
-                        std::cout << "Selectat: "<<clientSelectatNume.getVal()<<" (ID "<< clientSelectatId.getVal()<<")\n";
+                        std::cout<<"Selectat: "<<clientSelectatNume.getVal()<<" (ID "<<clientSelectatId.getVal()<<")\n";
                     }
-                    else std::cout<<"Clientul cautat nu exista"<< std::endl;
+                    else std::cout << "Clientul cautat nu exista.\n";
+
+
                 }
                 else if (opt2==4 )
                 {

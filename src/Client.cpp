@@ -4,6 +4,7 @@
 
 
 int Client::generatorId=1;
+
 Client::Client(): nume(""),email(""),nrTel(""),idClient(generatorId++),abonament(nullptr){}
 
 Client::Client(const std::string& nume, const std::string& email, const std::string& telefon):
