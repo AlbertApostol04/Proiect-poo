@@ -319,6 +319,7 @@ int main()
                         }
                         it->getAbonament()->checkIn();
                     }
+
                 }
             }
         }
