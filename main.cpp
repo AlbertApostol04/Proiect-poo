@@ -335,7 +335,7 @@ int main()
 
                 std::cout<<"Introduceti 0 pentru a parasi meniul Antrenori"<<std::endl;
 
-                if (!(std::cin>>opt))
+                if (!(std::cin>>opt3))
                 {
                     std::cin.clear();
                     std::cin.ignore(10000,'\n');
