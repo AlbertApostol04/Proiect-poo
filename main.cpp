@@ -81,7 +81,12 @@ int main()
         std::cout<<"Introduceti 0 pentru a inchide aplicatia\n";
 
         if (!(std::cin>>opt))
-            return 0;
+        {
+            std::cin.clear();
+            std::cin.ignore(10000,'\n');
+            std::cout<<"Input invalid. Introdu un numar.\n";
+            continue;
+        }
         if (opt == 0)
             break;
 
@@ -98,7 +103,12 @@ int main()
                 std::cout<<"Introduceti 0 pentru a parasi meniul Clienti"<<std::endl;
 
                 if (!(std::cin>>opt2))
-                    return 0;
+                {
+                    std::cin.clear();
+                    std::cin.ignore(10000,'\n');
+                    std::cout<<"Input invalid. Introdu un numar.\n";
+                    continue;
+                }
 
                 if (opt2==1)
                 {   std::string nume,email,nrtel;
@@ -325,8 +335,13 @@ int main()
 
                 std::cout<<"Introduceti 0 pentru a parasi meniul Antrenori"<<std::endl;
 
-                if (!(std::cin>>opt3))
-                    return 0;
+                if (!(std::cin>>opt))
+                {
+                    std::cin.clear();
+                    std::cin.ignore(10000,'\n');
+                    std::cout<<"Input invalid. Introdu un numar.\n";
+                    continue;
+                }
 
                 if (opt3 == 1)
                 {
