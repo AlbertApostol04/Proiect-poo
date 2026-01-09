@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <memory>
+#include <limits>
 
 #include "AbonamentCuAntrenor.h"
 #include "AbonamentCuIntrari.h"
@@ -19,6 +20,19 @@ int main()
 {
 
     int opt=-1,opt2=-1,opt3=-1,nr=-1;
+
+    auto citesteIntSigur = [&](const std::string& mesaj)->int {
+        int x;
+        while(true)
+        {
+            std::cout<<mesaj;
+            if (std::cin >> x) return x;
+
+            std::cout<<"Valoare invalida.Incercati din nou.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    };
 
 
     std::vector<Client>clienti;
@@ -80,8 +94,8 @@ int main()
         std::cout<<"Introduceti 2 pentru a intra in meniul antrenori\n";
         std::cout<<"Introduceti 0 pentru a inchide aplicatia\n";
 
-        if (!(std::cin>>opt))
-            return 0;
+        opt = citesteIntSigur("");
+
         if (opt == 0)
             break;
 
@@ -97,8 +111,7 @@ int main()
                 std::cout<<"Introduceti 5 pentru a valida checkin-ul clientului"<<std::endl;
                 std::cout<<"Introduceti 0 pentru a parasi meniul Clienti"<<std::endl;
 
-                if (!(std::cin>>opt2))
-                    return 0;
+                opt2 = citesteIntSigur("");
 
                 if (opt2==1)
                 {   std::string nume,email,nrtel;
@@ -325,8 +338,7 @@ int main()
 
                 std::cout<<"Introduceti 0 pentru a parasi meniul Antrenori"<<std::endl;
 
-                if (!(std::cin>>opt3))
-                    return 0;
+                opt3 = citesteIntSigur("");
 
                 if (opt3 == 1)
                 {
