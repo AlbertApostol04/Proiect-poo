@@ -12,9 +12,7 @@ nume(nume),email(email),nrTel(telefon),idClient(generatorId++),abonament(nullptr
 
 Client::Client(const Client& other)
     : nume(other.nume), email(other.email), nrTel(other.nrTel),
-      idClient(generatorId++), abonament(other.abonament)
-{
-}
+      idClient(generatorId++), abonament(other.abonament){}
 
 
 int Client::getIdClient() const
@@ -26,7 +24,6 @@ const std::string& Client::getNume() const
 {
     return nume;
 }
-
 
 const std::string& Client::getEmail() const
 {

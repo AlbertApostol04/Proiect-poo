@@ -73,7 +73,7 @@ int main()
     antrenori[Mihai.getIdAntrenor()] = Mihai;
     antrenori[Vlad.getIdAntrenor()] = Vlad;
 
- 
+
     while (true)
     {
         std::cout<<"Introduceti 1 pentru a intra in meniul clienti\n";
@@ -82,6 +82,7 @@ int main()
 
         if (!(std::cin>>opt))
         {
+
             if(std::cin.eof())
                 return 0;
             std::cin.clear();
@@ -102,7 +103,7 @@ int main()
                 std::cout<<"Introduceti 3 pentru a cauta un client dupa nume"<<std::endl;
                 std::cout<<"Introduceti 4 pentru a atasa un abonament unui client"<<std::endl;
                 std::cout<<"Introduceti 5 pentru a valida checkin-ul clientului"<<std::endl;
-                std::cout<<"Introduceti 0 pentru a parasi meniul Clienti"<<std::endl;
+                std::cout<<"Introduceti 0 pentru a parasi meniul clienti"<<std::endl;
 
                 if (!(std::cin>>opt2))
                 {

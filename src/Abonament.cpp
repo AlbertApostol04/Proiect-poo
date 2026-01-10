@@ -10,7 +10,6 @@ Abonament::Abonament()
     pret=0.0;
 
 }
-
 Abonament::Abonament(bool stud)
 {
 
