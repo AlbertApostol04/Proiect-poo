@@ -487,4 +487,4 @@ int main()
 }
 
 
-//antrenorul sa fie pentru orice tip de abonament si sa vedem cat de aglomerat pentru un interval de ore
+//antrenorul sa fie pentru orice tip de abonament
