@@ -32,7 +32,4 @@ const std::string& AbonamentPerioadaAntrenor::getNumeAntrenor() const
     return numeAntrenor;
 }
 
-const int AbonamentPerioadaAntrenor::getSedinte() const
-{
-    return sedinte;
-}
+

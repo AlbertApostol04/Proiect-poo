@@ -16,7 +16,6 @@ public:
     AbonamentPerioada();
     AbonamentPerioada(int zile, bool stud);
 
-
     void setIntrariEfectuate(int a);
 
     double oferte(int zile);

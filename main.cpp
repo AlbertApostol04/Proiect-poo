@@ -357,7 +357,6 @@ int main()
                                         if (proceseazaPlata(a->getPret())) {
                                             it1->second.alocaClient(it->getIdClient());
                                             antrenorSelectat.setVal(it1->first);
-
                                             abonamente.push_back(a);
                                             it->setAbonament(a.get());
                                             std::cout<<"Tip: "<<a->getTipAb()<<" | Zile ramase: "<<a->getZileRamase()<<"\n";

@@ -21,6 +21,6 @@ public:
 
     void setNumeAntrenor(const std::string& nume);
 
-    const int getSedinte()const;
+
 
 };
